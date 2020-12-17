@@ -42,15 +42,24 @@
     margin-left: 10px;
 }
 
-#fiveDay {
+#currentWeather {
+    float: left;
     padding-left: 10px;
+    width: 85.5%;
+}
+
+#fiveDay {
+    float: left;
+    padding-left: 10px;
+    width: 85.5%;
 }
 
 #fiveDayBreakdown div {
-    width: 10%;
+    width: 15%;
     display: flexbox;
     float: left;
     margin-left: 10px;
+    margin-right: 10px;
     border-style: solid;
     border-width: 1px;
     border-color: rgb(39, 39, 39);
