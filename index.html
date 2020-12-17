@@ -3,15 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <div class="container" id="citySearch">
+    <div class="container" id="weatherDashHead">
         <h1>
-            Search for a City:
+            Weather Dashboard
         </h1>
+    </div>
+    <hr>
+    <div class="container" id="citySidebar">
+        <div class="container">
+            <h2>Search for a City</h2>
+            <form id="citySearchForm" action="action_page.php">
+                <input type="text" placeholder="" name="citySearch">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+        </div>
         <div>
             <ul id=recentCities>
+                <li id='city1'>First City</li>
+                <li id='city2'>Second City</li>
+                <li id='city3'>Third City</li>
+                <li id='city4'>Fourth City</li>
+                <li id='city5'>Fifth City</li>
+                <li id='city6'>Sixth City</li>
+                <li id='city7'>Seventh City</li>
+                <li id='city8'>Eighth City</li>
+                <li id='city9'>Ninth City</li>
+                <li id='city10'>Tenth City</li>
             </ul>
         </div>
     </div>
@@ -20,7 +42,19 @@
 
         </div>
         <div id="5Day">
-
+            <h1>
+                5-Day Forecast
+            </h1>
+            <div id=5Day1>
+            </div>
+            <div id=5Day2>
+            </div>
+            <div id=5Day3>
+            </div>
+            <div id=5Day4>
+            </div>
+            <div id=5Day5>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
