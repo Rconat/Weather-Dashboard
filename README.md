@@ -13,6 +13,7 @@ You can find the repo on [GitHub](https://github.com/Rconat/Weather-Dashboard).
 ## Table of Contents
 
 * [List of Files](#List-of-Files)
+* [Open Weather Map API](#Open-Weather-Map-API)
 * [Usage](#usage)
 
 ## List of Files
