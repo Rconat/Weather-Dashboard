@@ -1,44 +1,49 @@
 var currentDay = moment().format('MMMM Do YYYY')
 var currentTime = moment().format('h:mm a')
-var currentCity = JSON.parse(localStorage.savedCities)[0]
 const apiKey = 'c9ef626d3d26fe5016c7a097d15877da'
-var recentCities = JSON.parse(localStorage.savedCities)
+var recentCities;
+var currentCity;
+
 
 // Page Load
 $(document).ready(function () {
     
     // if there is no localstorage push
-    if (currentCity === undefined) {
-        
-        recentCities.push("Chicago")
-        
-        localStorage.setItem('savedCities', JSON.stringify(recentCities))
-        console.log(recentCities)
-    } else {
-        var recentCities = localStorage.savedCities
-        console.log(recentCities)
-        console.log(currentCity)
-    }
+    if (typeof localStorage.savedCities !== 'undefined') {
+        currentCity = JSON.parse(localStorage.savedCities)[0]
+        recentCities = JSON.parse(localStorage.savedCities)
 
-    // Populate side bar with recent cities
-    var i;
-    console.log(JSON.parse(localStorage.savedCities).length)
-    if ((JSON.parse(localStorage.savedCities).length) <= 10) {
-        for (i = 0; i < JSON.parse(localStorage.savedCities).length; i++) {
-            $('#savedCities').append(
-                `<li class=recentCity id='${[i+1]}'>
-                    ${JSON.parse(localStorage.savedCities)[i]}
-                </li>`
-            )
+        // Populate side bar with recent cities
+        var i;
+        console.log(JSON.parse(localStorage.savedCities).length)
+        if ((JSON.parse(localStorage.savedCities).length) <= 10) {
+            for (i = 0; i < JSON.parse(localStorage.savedCities).length; i++) {
+                $('#savedCities').append(
+                    `<li class=recentCity id='${[i+1]}'>
+                        ${JSON.parse(localStorage.savedCities)[i]}
+                    </li>`
+                )
+            }
+        } else {
+            for (i = 0; i < 10; i++) {
+                $('#savedCities').append(
+                    `<li class=recentCity id='${[i+1]}'>
+                        ${JSON.parse(localStorage.savedCities)[i]}
+                    </li>`
+                )
+            }
         }
+
     } else {
-        for (i = 0; i < 10; i++) {
-            $('#savedCities').append(
-                `<li class=recentCity id='${[i+1]}'>
-                    ${JSON.parse(localStorage.savedCities)[i]}
-                </li>`
-            )
-        }
+        currentCity = 'Chicago'
+        recentCities = ['Chicago']
+
+        // Populate side bar with recent city
+        $('#savedCities').append(
+            `<li class=recentCity id='1'>
+                ${recentCities}
+            </li>`
+        )
     }
     
     var currentWeatherCall = 'http://api.openweathermap.org/data/2.5/weather?q=' + currentCity + '&units=imperial' + '&appid=' + apiKey
@@ -127,23 +132,27 @@ $(document).ready(function () {
 
 // On click search button function
 $("form").submit(function(event){
-    // event.preventDefault();
+
     var searchedCity = $("input").val()
-
     // add city to the local storage to keep it saved
-    console.log(recentCities, searchedCity)
     recentCities.unshift(searchedCity)
-    console.log(recentCities)
-
     localStorage.setItem('savedCities', JSON.stringify(recentCities))
-    console.log(JSON.parse(localStorage.savedCities))
 
 })
 
+// On click recent cities - push to array and reload page
 $('#savedCities').on('click', '.recentCity', function(){
-    console.log($(this).text().trim())
+
     var searchedCity = $(this).text().trim()
     recentCities.unshift(searchedCity)
+    // add city to the local storage to keep it saved
     localStorage.setItem('savedCities', JSON.stringify(recentCities))
+    location.reload();
+
+})
+
+// Clear recent history
+$('#clearRecent').click(function(){
+    localStorage.removeItem('savedCities')
     location.reload();
 })

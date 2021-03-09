@@ -32,7 +32,7 @@ For this applicaiton I have made use of the openweathermap API. This API makes a
 
 ## Usage 
 
-This application is available to any user who wishes to get current weather for any location as well as a 5-day forecast for any location. The user must first search for a city in the left hand panel. Once the user searches for a city the application makes an API call to the openweathermap API. The application then populates all the necessary information to the DOM to be viewed by the user. 
+This application is available to any user who wishes to get current weather for any location as well as a 5-day forecast for any location. Currently the application is set up so that the default location is set to Chicago since that's where I am from. If the user does not live in Chicago they must first search for a city in the left hand panel. Once the user searches for a city the application makes an API call to the openweathermap API. The application then populates all the necessary information to the DOM to be viewed by the user. 
 
 ---
 
