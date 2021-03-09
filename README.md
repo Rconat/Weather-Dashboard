@@ -28,11 +28,11 @@ You can find the repo on [GitHub](https://github.com/Rconat/Weather-Dashboard).
 
 ## Open Weather Map API
 
-For this applicaiton I have made use of the openweathermap API. This API makes available all current weather data for any location around the globe. The data comes back as a JSON object which is then manipulated in the JavaScript to be used by the application and grab the appropriate data back to the user.
+For this applicaiton I have made use of the openweathermap API. This API makes available all current weather data for any location around the globe. The data comes back as a JSON object which is then manipulated in the JavaScript to be used by the application and grab the appropriate data back to the user. For more information visit the [openweathermap API documentation](https://openweathermap.org/).
 
 ## Usage 
 
-This application is available to any user who wishes to get current weather for any location as well as a 5-day forecast for any location. The user must first search for a city in the left hand panel. Once the user searches for a city the application makes an API call to the openweathermap.org API. The application then populates all the necessary information to the DOM to be viewed by the user. 
+This application is available to any user who wishes to get current weather for any location as well as a 5-day forecast for any location. The user must first search for a city in the left hand panel. Once the user searches for a city the application makes an API call to the openweathermap API. The application then populates all the necessary information to the DOM to be viewed by the user. 
 
 ---
 
