@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Weather Dashboard</title>
 </head>
@@ -39,7 +41,9 @@
     </div>
     <div class="container" id="currentCityWeather">
         <div class="container" id="currentWeather">
-            <h2>Current weather in <span id='currentCityText'></span> on <span id='currentDate'></span><span id='currentCondition'></span></h2>
+            <h2>Current weather in <span id='currentCityText'></span> on <span id='currentDate'></span> at <span id='currentTime'></span>
+                <div id="currentCondition"></div>
+            </h2>
             <p>Temperature: <span id=currentTemp></span></p>
             <p>Humidity: <span id=currentHumidity></span></p>
             <p>Wind Speed: <span id=currentWindSpeed></span></p>
