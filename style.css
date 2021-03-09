@@ -87,3 +87,17 @@ li {
     list-style: none;
     border-style: solid, black, 2px;
 }
+
+p {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+#currentTemp #currentHumidity #currentWindSpeed #currentUV {
+    font-weight: bolder;
+}
+
+#weatherIcon {
+    width:6%;
+    height:auto;
+}
