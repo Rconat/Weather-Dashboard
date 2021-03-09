@@ -48,6 +48,7 @@
 #fiveDay {
     margin-top: 5px;
     margin-left: 5px;
+    padding-bottom: 50px;
     float: left;
     padding-left: 10px;
     width: 100%;
@@ -100,4 +101,12 @@ p {
 #weatherIcon {
     width:6%;
     height:auto;
+}
+
+#fiveDay1Date, #fiveDay2Date, #fiveDay3Date, #fiveDay4Date, #fiveDay5Date {
+    text-align: center;
+}
+
+#fiveDay1, #fiveDay2, #fiveDay3, #fiveDay4, #fiveDay5 {
+    padding-right: 10px;
 }
