@@ -89,6 +89,11 @@ li {
     border-style: solid, black, 2px;
 }
 
+h3 {
+    text-align: center;
+    margin-bottom: 2px;
+}
+
 p {
     font-size: 120%;
     font-weight: bold;

@@ -1,12 +1,13 @@
 var currentDay = moment().format('MMMM Do YYYY')
 var currentTime = moment().format('h:mm a')
-var currentCity = localStorage.savedCities
+var currentCity = JSON.parse(localStorage.savedCities)[0]
 const apiKey = 'c9ef626d3d26fe5016c7a097d15877da'
-var recentCities = []
+var recentCities = JSON.parse(localStorage.savedCities)
 
 // Page Load
 $(document).ready(function () {
     
+    // if there is no localstorage push
     if (currentCity === undefined) {
         
         recentCities.push("Chicago")
@@ -16,11 +17,32 @@ $(document).ready(function () {
     } else {
         var recentCities = localStorage.savedCities
         console.log(recentCities)
+        console.log(currentCity)
+    }
+
+    // Populate side bar with recent cities
+    var i;
+    console.log(JSON.parse(localStorage.savedCities).length)
+    if ((JSON.parse(localStorage.savedCities).length) <= 10) {
+        for (i = 0; i < JSON.parse(localStorage.savedCities).length; i++) {
+            $('#savedCities').append(
+                `<li class=recentCity id='${[i+1]}'>
+                    ${JSON.parse(localStorage.savedCities)[i]}
+                </li>`
+            )
+        }
+    } else {
+        for (i = 0; i < 10; i++) {
+            $('#savedCities').append(
+                `<li class=recentCity id='${[i+1]}'>
+                    ${JSON.parse(localStorage.savedCities)[i]}
+                </li>`
+            )
+        }
     }
     
-    // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key} - current weather
     var currentWeatherCall = 'http://api.openweathermap.org/data/2.5/weather?q=' + currentCity + '&units=imperial' + '&appid=' + apiKey
-    // api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key} - 5 day forecast
+
     var fiveDayCall = 'http://api.openweathermap.org/data/2.5/forecast?q=' + currentCity + '&units=imperial' + "&appid=" + apiKey
 
     // API call for current weather    
@@ -105,15 +127,23 @@ $(document).ready(function () {
 
 // On click search button function
 $("form").submit(function(event){
-    event.preventDefault();
-    var searchedCity = [$("input").val()]
+    // event.preventDefault();
+    var searchedCity = $("input").val()
 
     // add city to the local storage to keep it saved
     console.log(recentCities, searchedCity)
-    recentCities.push(searchedCity)
+    recentCities.unshift(searchedCity)
     console.log(recentCities)
 
-    localStorage.setItem('savedCities', (recentCities))
-    console.log(localStorage.savedCities)
+    localStorage.setItem('savedCities', JSON.stringify(recentCities))
+    console.log(JSON.parse(localStorage.savedCities))
 
+})
+
+$('#savedCities').on('click', '.recentCity', function(){
+    console.log($(this).text().trim())
+    var searchedCity = $(this).text().trim()
+    recentCities.unshift(searchedCity)
+    localStorage.setItem('savedCities', JSON.stringify(recentCities))
+    location.reload();
 })
