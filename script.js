@@ -9,7 +9,7 @@ $(document).ready(function () {
     
     if (currentCity === undefined) {
         
-        recentCities.push(["Chicago"])
+        recentCities.push("Chicago")
         
         localStorage.setItem('savedCities', JSON.stringify(recentCities))
         console.log(recentCities)
@@ -69,8 +69,6 @@ $(document).ready(function () {
         cors: true,
         contentType: "application/json",
     }).then(function (fiveDayResult) {
-        console.log(fiveDayResult)
-        console.log(fiveDayResult.list[0])
 
         // populate five day forecast days
         $('#fiveDay1Date').text((moment().day(moment().day())._d).toString().slice(0, 10))
