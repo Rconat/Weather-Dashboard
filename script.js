@@ -1,18 +1,24 @@
 var currentDay = moment().format('MMMM Do YYYY')
 var currentTime = moment().format('h:mm a')
-var currentCity = 'Chicago'
-var recentCities = ['Chicago']
-var apiKey = 'c9ef626d3d26fe5016c7a097d15877da'
+const apiKey = 'c9ef626d3d26fe5016c7a097d15877da'
 
-document.getElementById('searchBtn').addEventListener("click", newCitySearch)
-
-// api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key} - current weather
-var currentWeatherCall = 'http://api.openweathermap.org/data/2.5/weather?q=' + currentCity + '&units=imperial' + '&appid=' + apiKey
-// api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key} - 5 day forecast
-var fiveDayCall = 'http://api.openweathermap.org/data/2.5/forecast?q=' + currentCity + "&appid=" + apiKey
 
 // Page Load
 $(document).ready(function () {
+    
+    if (localStorage.savedCities === undefined) {
+        var recentCities = []
+        
+        recentCities.push("Chicago")
+        
+        localStorage.setItem('savedCities', JSON.stringify(recentCities))
+    }
+    
+    // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key} - current weather
+    var currentWeatherCall = 'http://api.openweathermap.org/data/2.5/weather?q=' + currentCity + '&units=imperial' + '&appid=' + apiKey
+    // api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key} - 5 day forecast
+    var fiveDayCall = 'http://api.openweathermap.org/data/2.5/forecast?q=' + currentCity + "&appid=" + apiKey
+
     // API call for current weather    
     $.ajax({
         url: currentWeatherCall,
@@ -51,17 +57,24 @@ $(document).ready(function () {
             $('#currentUV').text(resultUV.value)
         });
     });
+
+    
 });
 
 
-
 // On click search button function
-function newCitySearch() {
-    var searchText = document.getElementById ('citySearchForm').innerText
-    currentCity = searchText
-    console.log(currentCity)
+$("form").submit(function(event){
+    event.preventDefault();
+    var searchedCity = $("input").val()
+    console.log(searchedCity)
+
+    recentCities = []
 
     // add city to the local storage to keep it saved
-    localStorage.setItem("selectedCity", currentCity)
-    localStorage.setItem("savedCities", recentCities)
-}
+    recentCities.push(searchedCity)
+    console.log(recentCities)
+
+    localStorage.setItem('savedCities', JSON.stringify(recentCities))
+    console.log(localStorage.savedCities)
+
+})
