@@ -15,7 +15,6 @@ $(document).ready(function () {
 
         // Populate side bar with recent cities
         var i;
-        console.log(JSON.parse(localStorage.savedCities).length)
         if ((JSON.parse(localStorage.savedCities).length) <= 10) {
             for (i = 0; i < JSON.parse(localStorage.savedCities).length; i++) {
                 $('#savedCities').append(
@@ -46,9 +45,9 @@ $(document).ready(function () {
         )
     }
     
-    var currentWeatherCall = 'http://api.openweathermap.org/data/2.5/weather?q=' + currentCity + '&units=imperial' + '&appid=' + apiKey
+    var currentWeatherCall = 'https://api.openweathermap.org/data/2.5/weather?q=' + currentCity + '&units=imperial' + '&appid=' + apiKey
 
-    var fiveDayCall = 'http://api.openweathermap.org/data/2.5/forecast?q=' + currentCity + '&units=imperial' + "&appid=" + apiKey
+    var fiveDayCall = 'https://api.openweathermap.org/data/2.5/forecast?q=' + currentCity + '&units=imperial' + "&appid=" + apiKey
 
     // API call for current weather    
     $.ajax({
