@@ -68,7 +68,7 @@ $(document).ready(function () {
 
         //variable for the weather icon
         const icon = result.weather[0].icon;
-        const iconUrl = "http://openweathermap.org/img/w/" + icon + ".png";
+        const iconUrl = "https://openweathermap.org/img/w/" + icon + ".png";
 
         // appending weather icon to the DOM
         $('#currentCondition').append(
